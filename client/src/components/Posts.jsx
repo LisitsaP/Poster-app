@@ -1,26 +1,11 @@
 import React, { useState, useEffect } from "react";
 import Post from "./Post";
 import cls from "./Posts.module.css";
-import NewPost from "../routes/NewPost";
-import Modal from "./Modal";
+
 import { useLoaderData } from "react-router-dom";
 
-export default function Posts({ isPosting, modalCloseHandler }) {
-  // const [posts, setPosts] = useState([]);
-  const [loading, setLoading] = useState(false);
-
+export default function Posts({}) {
   const posts = useLoaderData();
-
-  // useEffect(() => {
-  //   async function fetchPost() {
-  //     setLoading(true);
-  //     const res = await fetch("http://localhost:8080/posts");
-  //     const resData = await res.json();
-  //     setPosts(resData.posts);
-  //     setLoading(false);
-  //   }
-  //   fetchPost();
-  // }, []);
 
   function addPostHandler(postData) {
     fetch("http://localhost:8080/posts", {
@@ -34,21 +19,13 @@ export default function Posts({ isPosting, modalCloseHandler }) {
   }
   return (
     <>
-      {isPosting && (
-        <Modal onClose={modalCloseHandler}>
-          <NewPost onCancel={modalCloseHandler} onAddPost={addPostHandler} />
-        </Modal>
+      {posts.length > 0 && (
+        <ul className={cls.posts}>
+          {posts.map((post) => (
+            <Post author={post.author} body={post.body} key={post.id++} />
+          ))}
+        </ul>
       )}
-      {
-        // !loading &&
-        posts.length > 0 && (
-          <ul className={cls.posts}>
-            {posts.map((post) => (
-              <Post author={post.author} body={post.body} key={post.id++} />
-            ))}
-          </ul>
-        )
-      }
       {
         // !loading &&
         posts.length == 0 && (

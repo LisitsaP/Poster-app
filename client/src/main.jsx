@@ -9,7 +9,7 @@ import {
   // Link,
 } from "react-router-dom";
 import RootLayout from "./routes/RootLayout";
-import NewPost from "./routes/NewPost";
+import NewPost, { action as actionNewPost } from "./routes/NewPost";
 
 const router = createBrowserRouter([
   {
@@ -20,7 +20,9 @@ const router = createBrowserRouter([
         path: "/",
         element: <PostList />,
         loader: postLoader,
-        children: [{ path: "/create-post", element: <NewPost /> }],
+        children: [
+          { path: "/create-post", element: <NewPost />, action: actionNewPost },
+        ],
       },
     ],
   },

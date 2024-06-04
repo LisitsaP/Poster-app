@@ -1,25 +1,12 @@
-// import { useState } from "react";
-// import MainHeader from "../components/MainHeader";
 import { Outlet } from "react-router-dom";
 import Posts from "../components/Posts";
 
 function PostList() {
-  // const [modalOpen, setModalOpen] = useState(false);
-
-  // function modalCloseHandler() {
-  //   setModalOpen(false);
-  // }
-  // function modalOpenHandler() {
-  //   setModalOpen(true);
-  // }
   return (
     <>
-      {/* <MainHeader onCreatePost={modalOpenHandler} /> */}
       <Outlet />
       <main>
-        <Posts
-        // isPosting={modalOpen} modalCloseHandler={modalCloseHandler}
-        />
+        <Posts />
       </main>
     </>
   );
