@@ -8,6 +8,11 @@
     align-items: center;
     border-bottom: 2px solid #ece1fa;
   }
+
+  .header a{
+    text-decoration: none;
+  }
+
   
   .logo {
     font-size: 2rem;
